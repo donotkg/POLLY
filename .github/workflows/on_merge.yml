@@ -1,9 +1,30 @@
-name: Test workflow
+name : Polly pipeline (Prod)
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  test:
+  run_polly:
     runs-on: ubuntu-latest
+    env:
+      S3_Bucket: ${{ secrets.s3_BUCKET_PROD }}
+      S3_PATH: ${{ secrets.S3_PATH_PROD }}
     steps:
-      - run: echo "Hello GitHub Actions"
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+           aws-access-key-id: ${{ secret.AWS_ACCESS_KEY_ID }}
+           aws-secret-access-key: ${{ secret.AWS_SECRET_ACCESS_KEY }}
+           aws-region: us-east-1 # Change this to your desired AWS region
+
+      - name: Convert txt to mp3 (prod)
+        run: |
+          pip install boto3 - - upgrade
+          python synthesize.py
+          aws s3 cp example.mp3 s3://$S3_BUCKET/$S3_PATH
+      
