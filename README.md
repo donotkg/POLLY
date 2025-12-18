@@ -62,14 +62,15 @@ audio/prod/
 
 File Structure
 
-.
+
 ├── .github/
 │   └── workflows/
 │       ├── beta.yml
 │       └── prod.yml
 ├── speech.txt
 ├── synthesize.py
-└── README.md
+└── README.md 
+
 
 
 
