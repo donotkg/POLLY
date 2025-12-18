@@ -4,7 +4,7 @@ This project uses Amazon Polly's generative engine to convert text from speech.t
 
 ---
 
-Prerequisites
+Prerequisites 
 
 * ﻿﻿AWS account
 * ﻿﻿An S3 bucket for each environment (e.g., beta and prod)
@@ -16,7 +16,8 @@ Prerequisites
 AWS Credentials & S3 Setup
 
 1. ﻿﻿﻿Create an S3 bucket (or two: one for beta, one for prod).
-2. ﻿﻿﻿In your GitHub repository, go to Settings Secrets and variables → Actions and add the following repository secrets: AWS_ACCESS_KEY_ID
+2. In your GitHub repository, go to Settings Secrets and variables → Actions and add the following repository secrets:
+* AWS_ACCESS_KEY_ID
 * ﻿AWS_SECRET_ACCESS_KEY
 * ﻿﻿53_BUCKET_BETA - e.g., my-tts-bucket-beta
 * ﻿﻿S3_PATH_BETA - e.g., audio/beta/example.mp3
@@ -59,7 +60,7 @@ audio/prod/
 
 ---
 
-## File Structure
+File Structure
 
 .
 ├── .github/
@@ -69,3 +70,6 @@ audio/prod/
 ├── speech.txt
 ├── synthesize.py
 └── README.md
+
+
+
